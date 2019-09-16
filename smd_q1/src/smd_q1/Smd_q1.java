@@ -18,19 +18,19 @@ public class Smd_q1 {
      */
     static public void menu(){
             System.out.println("Select one character: Enter 1 for Warrior and 2 for Wizard:");
-            System.out.println("Press 11 any time to exit to lobby");
-            System.out.println("Note: During playing press 9 to attack, 8 to attack&speak, 7 to jump, 6 to speak by alien.");
+            System.out.println("Press 10 any time to exit.");
+            System.out.println("Note: During playing press 9 to attack, 7 to jump, 6 to speak by alien.");
     }
     static public void moves(){
-            System.out.println("Press 1 to attack");
-            System.out.println("Press 2 to defend");
-            System.out.println("Press 3 to capture/heal");
-            System.out.println("Press 4 to jump");
-            System.out.println("Press 5 to speak");
+            System.out.println("1.Press 1 to attack.");
+            System.out.println("2.Press 2 to speak.");
+            System.out.println("3.Press 3 to capture/heal.");
+            System.out.println("4.Press 4 to defend.");
+            System.out.println("5.Press 5 to jump.");
     }
     public static void main(String[] args) {
         String name;
-        int flag = 0, done=0,players=0;
+        int done=0,players=0;
         Alien alien = null;
         Human H_type = null;
         int move;
@@ -59,7 +59,7 @@ public class Smd_q1 {
                
 
             }
-            while(true){
+            while(true&&(H_type!=null)){
             moves();
             move = s.nextInt();
 
@@ -77,11 +77,11 @@ public class Smd_q1 {
                         alien.health -= 15;
                     }
                     H_type.health-=5;
-                    H_type.calculateHealth();
                     alien.calculateHealth();
+                    H_type.calculateHealth();
                 }
             } else if (move == 2) {
-                H_type.defend();
+                H_type.speak();
             } else if (move == 3){
                 if (H_type instanceof Warrior) {
                     Warrior war = (Warrior) H_type;
@@ -96,14 +96,12 @@ public class Smd_q1 {
                 }
                     
             } else if (move == 4) {
-                H_type.jump();
+                H_type.defend();
             } else if (move == 5) {
-                H_type.speak();
-            }else if (move == 11) {
+                H_type.jump();
+            }else if (move == 10) {
                 break;
             }else
-                done=2;
-            if(done==2)
                 pl = s.nextInt();
             if (pl == 9) {
                 if (move == 2) {
