@@ -17,7 +17,7 @@ public class Alien implements Character{
     }
     @Override
     public void defend(){
-        System.out.println("Alien Defended the attack!");
+        System.out.println("Alien defended the attack.");
     }
 
     @Override

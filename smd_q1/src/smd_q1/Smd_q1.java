@@ -21,6 +21,13 @@ public class Smd_q1 {
             System.out.println("Press 11 any time to exit to lobby");
             System.out.println("Note: During playing press 9 to attack, 8 to attack&speak, 7 to jump, 6 to speak by alien.");
     }
+    static public void moves(){
+            System.out.println("Press 1 to attack");
+            System.out.println("Press 2 to defend");
+            System.out.println("Press 3 to capture/heal");
+            System.out.println("Press 4 to jump");
+            System.out.println("Press 5 to speak");
+    }
     public static void main(String[] args) {
         String name;
         int flag = 0, done=0,players=0;
@@ -52,18 +59,8 @@ public class Smd_q1 {
                
 
             }
-            //System.out.println();
-            /*if (H_type instanceof Warrior) {
-                flag = 1;
-            } else {
-                flag = 2;
-            }*/
             while(true){
-            System.out.println("Press 1 to attack");
-            System.out.println("Press 2 to defend");
-            System.out.println("Press 3 to capture/heal");
-            System.out.println("Press 4 to jump");
-            System.out.println("Press 5 to speak");
+            moves();
             move = s.nextInt();
 
             if (move == 1) {
@@ -115,7 +112,7 @@ public class Smd_q1 {
                 } else {
                     H_type.health -= 5;
                     if (H_type.calculateHealth() <= 0) {
-                        System.out.println("You loss!");
+                        System.out.println("Character has been wasted.");
                         return;
                     }
                 }
