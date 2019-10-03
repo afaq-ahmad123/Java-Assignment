@@ -188,8 +188,13 @@ public class fitness_center {
                     break;
                 case "member":
                     System.out.print("Is membership fee submitted? true/false ");
-                    if(s.nextBoolean()==true)
+                    if(s.nextBoolean()==true){
                         clients.get(id).client_type("member");
+                        System.out.print("Upgraded to member. ");
+                    }
+                    else{
+                        System.out.print("Submit fee first!");
+                    }
                     break;
                 default:
                     System.out.println("No such facility exist!");
@@ -221,7 +226,7 @@ public class fitness_center {
             System.out.print("This id doesn't exist.\n");
             return;
         }
-        System.out.print("Enter Facilities you want to delete: ");
+        System.out.print("Enter Facilities you want to avail: ");
         String facility=null;
         try{
             facility=s.next();

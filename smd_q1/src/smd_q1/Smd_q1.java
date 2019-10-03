@@ -19,7 +19,7 @@ public class Smd_q1 {
     static public void menu(){
             System.out.println("Select one character: Enter 1 for Warrior and 2 for Wizard:");
             System.out.println("Press 10 any time to exit.");
-            System.out.println("Note: During playing press 9 to attack, 7 to jump, 6 to speak by alien.");
+            System.out.println("During playing press 9 to attack, 7 to jump,8 to defend, 6 to speak by alien.");
     }
     static public void moves(){
             System.out.println("1.Press 1 to attack.");
@@ -38,7 +38,12 @@ public class Smd_q1 {
         Scanner s1 = new Scanner(System.in);
         while (true) {
             menu();
-            int pl = s.nextInt();
+            int pl=-1;
+        while (!s.hasNextInt()) {
+            System.out.println("Enter Valid input!");
+            s.next();
+        }
+            pl=s.nextInt();
             if (pl == 1) {
                 alien = new Alien();
                 System.out.println("You have selected Warrior.");
@@ -69,16 +74,16 @@ public class Smd_q1 {
                 if (pl != 8) {
                     done=1;
                     H_type.attack();
-                    alien.attack();
+                    //alien.attack();
                     if (H_type instanceof Warrior) {
                         alien.health -= 20;
                         
                     } else {
                         alien.health -= 15;
                     }
-                    H_type.health-=5;
+                    //H_type.health-=5;
                     alien.calculateHealth();
-                    H_type.calculateHealth();
+                    //H_type.calculateHealth();
                 }
             } else if (move == 2) {
                 H_type.speak();
@@ -104,17 +109,22 @@ public class Smd_q1 {
             }else
                 pl = s.nextInt();
             if (pl == 9) {
-                if (move == 2) {
+                if (move == 4) {
                     alien.attack();
                     H_type.defend();
                 } else {
                     H_type.health -= 5;
+                    alien.attack();
                     if (H_type.calculateHealth() <= 0) {
                         System.out.println("Character has been wasted.");
                         return;
                     }
                 }
-            } else if (pl == 6) {
+            }
+            else if (pl == 8) {
+                alien.defend();
+            }
+            else if (pl == 6) {
                 alien.speak();
             }else if (pl == 7) {
                 alien.jump();

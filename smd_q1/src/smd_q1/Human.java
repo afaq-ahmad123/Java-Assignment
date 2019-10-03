@@ -10,7 +10,7 @@ package smd_q1;
  * @author Dell Pc
  */
 
-class Human implements Character{
+abstract class Human implements Character{
     final String name;
     
     protected int health;
@@ -62,6 +62,7 @@ class Human implements Character{
 
     @Override
     public void defend() {
+        System.out.println("Character Defended!!");
         }
 
     @Override
